@@ -1,6 +1,6 @@
 # FusionLocalAuth
 
-Another Fusion library to implement the local authentication using Biometry, or device password.
+Another Fusion library to implement the local authentication using Biometry, or device password. It is fully compatible cross-platform for iOS and Android.
 
 Features:
 
