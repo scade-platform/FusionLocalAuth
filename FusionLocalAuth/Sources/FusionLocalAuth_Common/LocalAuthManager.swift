@@ -12,7 +12,7 @@ public enum AuthError{
     /*
      * @property BIOMETRY_NOT_AVAILABLE
      *
-     * @discussion when Biometry is not available in the device
+     * @discussion Biometry is not available in the device
      */
     case BIOMETRY_NOT_AVAILABLE
     
