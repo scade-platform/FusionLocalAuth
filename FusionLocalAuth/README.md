@@ -7,7 +7,7 @@ Features:
 1.) detect whether the device has Biometry enabled or not
 
 
-    ```swift
+    ``` swift
             canAuthenticateWithBiometrics()
     ```
 
@@ -15,7 +15,7 @@ Features:
 2.) request for only Biometry authentication (face auth or fingerprint)
 
 
-    ```swift
+    ``` swift
     
                 requestBiometricAuthentication()
                 
@@ -24,13 +24,13 @@ Features:
 3.) request for Biometry authentication (face auth or fingerprint or pin/password)
 
 
-    ```swift
+    ``` swift
                     requestDeviceAuthentication()
     ```
     
 3.) handle the callback for succesful/failed authentication
 
-    ```swift
+    ``` swift
                 onAuthSuccess()
                 onAuthFailure(error: AuthError)
     ```
