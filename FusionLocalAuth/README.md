@@ -4,7 +4,7 @@ Another Fusion library to implement the local authentication using Biometry, or 
 
 Features:
 
-1.) detect whether the device has Biometry enabled or not
+## 1.) detect whether the device has Biometry enabled or not
 
 
     
@@ -12,7 +12,7 @@ Features:
    
 
 
-2.) request for only Biometry authentication (face auth or fingerprint)
+## 2.) request for only Biometry authentication (face auth or fingerprint)
 
 
     
@@ -21,7 +21,7 @@ Features:
   
                 
     
-3.) request for Biometry authentication (face auth or fingerprint or pin/password)
+## 3.) request for Biometry authentication (face auth or fingerprint or pin/password)
 
 
    
@@ -29,7 +29,7 @@ Features:
 
    
     
-3.) handle the callback for succesful/failed authentication
+## 4.) handle the callback for succesful/failed authentication
 
     
                 onAuthSuccess()
