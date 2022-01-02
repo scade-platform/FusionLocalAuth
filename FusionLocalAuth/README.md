@@ -8,7 +8,7 @@ Features:
 
 
     
-            canAuthenticateWithBiometrics()
+                canAuthenticateWithBiometrics()
    
 
 
@@ -25,7 +25,7 @@ Features:
 
 
    
-                    requestDeviceAuthentication()
+                requestDeviceAuthentication()
 
    
     
