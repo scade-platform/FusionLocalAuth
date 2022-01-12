@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AuthError{
+public enum AuthError: Error{
     
     /*
      * @property BIOMETRY_NOT_AVAILABLE
@@ -97,7 +97,7 @@ public protocol LocalAuthManagerProtocol {
      *        cancelText: String
      *
      */
-    func requestBiometricAuthentication(authTitle:String, reasonTitle:String, cancelText:String) -> Void
+    func requestBiometricAuthentication(authTitle:String, reasonTitle:String, cancelText:String, status: @escaping (AuthError?) -> Void )
     
     /*
      * @property requestDeviceAuthentication
@@ -109,28 +109,6 @@ public protocol LocalAuthManagerProtocol {
      *        cancelText: String
      *
      */
-    func requestDeviceAuthentication(title:String, reasonTitle:String, cancelText:String) -> Void
-    
-    /*
-     * @property onAuthSuccess
-     *
-     * @discussion callback method for the successful authentication
-     *
-     * @param value: Integer
-     *        key: Key String Value
-     *
-     */
-    func onAuthSuccess() -> Void
-    
-    /*
-     * @property set
-     *
-     * @discussion callback method for the un-successful authentication
-     *
-     * @param error: AuthError
-     *
-     *
-     */
-    func onAuthFailure(error: AuthError) -> Void
+    func requestDeviceAuthentication(authTitle:String, reasonTitle:String, cancelText:String, status: @escaping (AuthError?) -> Void)
     
 }
