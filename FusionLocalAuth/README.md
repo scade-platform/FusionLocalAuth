@@ -27,12 +27,3 @@ Features:
    
                 requestDeviceAuthentication()
 
-   
-    
-### 4.) handle the callback for succesful/failed authentication
-
-    
-                onAuthSuccess()
-                onAuthFailure(error: AuthError)
-    
-
