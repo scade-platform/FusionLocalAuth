@@ -39,7 +39,7 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
     public func canAuthenticateWithBiometrics() -> Bool {
         var authorizationError: NSError?
         
-    
+        
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authorizationError) {
             return true;
         }
@@ -59,65 +59,6 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
                 status(false, (evaluateError as? AuthError))
             }
         }
-        
-        
-        
-        func requestAuth(fallbackTitle:String, cancelTitle:String, reasonTitle: String) {
-            let localAuthenticationContext = LAContext()
-            localAuthenticationContext.localizedFallbackTitle = fallbackTitle
-            
-            if #available(OSX 10.12, *) {
-                localAuthenticationContext.localizedCancelTitle = cancelTitle
-            } else {
-                // Fallback on earlier versions
-            }
-            
-            var authorizationError: NSError?
-            if #available(OSX 10.12, *) {
-            } else {
-                // Fallback on earlier versions
-            }
-            
-            
-            if #available(OSX 10.12.2, *) {
-                if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authorizationError) {
-                    
-                    localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonTitle) { success, evaluateError in
-                        if success {
-                            
-                        } else {
-                            
-                            //self.delegate?.onFailure(error: evaluateError as! LAError)
-                            localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reasonTitle) { success, evaluateError in
-                                
-                                if success {
-                                    //
-                                    
-                                    
-                                } else {
-                                    
-                                    /*
-                                     if(evaluateError.code == 1)
-                                     self.delegate?.onFailure(error: .ERROR1)
-                                     */
-                                    
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    
-                    //            guard let error = authorizationError else {
-                    //                return
-                    //            }
-                    //self.delegate?.onFailure(error: authorizationError as! LAError)
-                }
-            } else {
-                // Fallback on earlier versions
-            }
-            
-        }
-        
     }
 }
 
