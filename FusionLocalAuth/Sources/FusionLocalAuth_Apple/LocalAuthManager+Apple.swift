@@ -5,6 +5,8 @@
 //  Created by VJ on 31/12/21.
 //
 
+#if os(macOS) || os(iOS)
+
 import Foundation
 import FusionLocalAuth_Common
 
@@ -26,3 +28,5 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
     
     
 }
+
+#endif
