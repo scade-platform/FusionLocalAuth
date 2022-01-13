@@ -71,6 +71,30 @@ public enum AuthError: Error{
      * @discussion A passcode isn’t set on the device.
      */
     case PASSCODE_NOT_SET
+    
+    public func description() -> String {
+            switch self {
+            case .BIOMETRY_NOT_AVAILABLE:
+                return "Biometry is not available in the device."
+            case .BIOMETRY_LOCKOUT:
+                return "Biometry is locked because there were too many failed attempts."
+            case .BIOMETRY_NOT_ENROLLED:
+                return "The user has no enrolled biometric identities."
+            case .BIOMETRY_DISCONNECTED:
+                return "The device supports biometry only using a removable accessory, but the paired accessory isn’t connected."
+            case .AUTH_CANCELLED_USER:
+                return "The user tapped the cancel button in the authentication dialog."
+            case .AUTH_CANCELLED_SYSTEM:
+                return "The system canceled authentication."
+            case .AUTH_FAILED:
+                return "The user failed to provide valid credentials."
+            case .AUTH_NOT_INTERACTIVE:
+                return "Displaying the required authentication user interface is forbidden."
+            case .PASSCODE_NOT_SET:
+                return "A passcode isn’t set on the device."
+            }
+        }
+    
 }
 
 
