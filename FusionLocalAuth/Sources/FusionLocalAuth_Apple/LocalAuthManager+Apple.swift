@@ -33,17 +33,13 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
         }
     }
     
-    
-    
     @available(OSX 10.12.2, *)
     public func canAuthenticateWithBiometrics() -> Bool {
         var authorizationError: NSError?
         
-        
         if localAuthenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authorizationError) {
             return true;
         }
-        
         return false;
     }
     
@@ -94,7 +90,6 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
         default:
             return error as! AuthError
         }
-        
     }
 }
 
