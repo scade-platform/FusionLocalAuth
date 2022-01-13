@@ -106,7 +106,7 @@ public enum AuthError: Error{
     
 }
 
-
+@available(OSX 10.12.2, *)
 public protocol LocalAuthManagerProtocol {
     
     init()
@@ -130,7 +130,8 @@ public protocol LocalAuthManagerProtocol {
      *        cancelText: String
      *
      */
-    func requestBiometricAuthentication(authTitle:String, reasonTitle:String, cancelText:String, status: @escaping (AuthError?) -> Void )
+    @available(OSX 10.12.2, *)
+    func requestBiometricAuthentication(authTitle:String, reasonTitle:String, cancelTitle:String, status: @escaping (Bool, AuthError?) -> Void )
     
     /*
      * @property requestDeviceAuthentication
@@ -142,6 +143,6 @@ public protocol LocalAuthManagerProtocol {
      *        cancelText: String
      *
      */
-    func requestDeviceAuthentication(authTitle:String, reasonTitle:String, cancelText:String, status: @escaping (AuthError?) -> Void)
+    func requestDeviceAuthentication(authTitle:String, reasonTitle:String, cancelTitle:String, status: @escaping (Bool, AuthError?) -> Void)
     
 }
