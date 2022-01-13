@@ -25,46 +25,11 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
         
         localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reasonTitle) { success, evaluateError in
             
-            if let error = evaluateError {
-                switch error._code {
-                case LAError.userCancel.rawValue:
-                    status(false, .AUTH_CANCELLED_USER)
-                    break
-                case LAError.authenticationFailed.rawValue:
-                    status(false, .AUTH_CANCELLED_SYSTEM)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .AUTH_FAILED)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .AUTH_NOT_INTERACTIVE)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_DISCONNECTED)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_LOCKOUT)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_NOT_AVAILABLE)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_NOT_ENROLLED)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .PASSCODE_NOT_SET)
-                    break
-                    
-                default:
-                    status(false, error as! AuthError)
-                    break
-                }
-            }
-            
-            // successful deviceAuthentication
             if success {
                 status(true, nil)
             }
+            let authError = self.getAuthError(error: evaluateError!)
+            status(false, authError)
         }
     }
     
@@ -88,46 +53,48 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
         localAuthenticationContext.localizedCancelTitle = cancelTitle
         
         localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonTitle) { success, evaluateError in
-            
-            if let error = evaluateError {
-                switch error._code {
-                case LAError.userCancel.rawValue:
-                    status(false, .AUTH_CANCELLED_USER)
-                    break
-                case LAError.authenticationFailed.rawValue:
-                    status(false, .AUTH_CANCELLED_SYSTEM)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .AUTH_FAILED)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .AUTH_NOT_INTERACTIVE)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_DISCONNECTED)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_LOCKOUT)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_NOT_AVAILABLE)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .BIOMETRY_NOT_ENROLLED)
-                    break
-                case LAError.userCancel.rawValue:
-                    status(false, .PASSCODE_NOT_SET)
-                    break
-                    
-                default:
-                    status(false, error as! AuthError)
-                    break
-                }
-            }
             if success {
                 status(true, nil)
             }
+            let authError = self.getAuthError(error: evaluateError!)
+            status(false, authError)
         }
+    }
+    
+    public func getAuthError(error:Error) -> AuthError {
+        switch error._code {
+        
+        case LAError.userCancel.rawValue:
+            return .AUTH_CANCELLED_USER
+            
+        case LAError.authenticationFailed.rawValue:
+            return .AUTH_CANCELLED_SYSTEM
+            
+        case LAError.userCancel.rawValue:
+            return .AUTH_FAILED
+            
+        case LAError.userCancel.rawValue:
+            return  .AUTH_NOT_INTERACTIVE
+            
+        case LAError.userCancel.rawValue:
+            return .BIOMETRY_DISCONNECTED
+            
+        case LAError.userCancel.rawValue:
+            return .BIOMETRY_LOCKOUT
+            
+        case LAError.userCancel.rawValue:
+            return .BIOMETRY_NOT_AVAILABLE
+            
+        case LAError.userCancel.rawValue:
+            return .BIOMETRY_NOT_ENROLLED
+            
+        case LAError.userCancel.rawValue:
+            return .PASSCODE_NOT_SET
+            
+        default:
+            return error as! AuthError
+        }
+        
     }
 }
 
