@@ -107,6 +107,7 @@ public enum AuthError: Error{
                 
             case .PASSCODE_NOT_SET:
                 return "A passcode isn’t set on the device."
+                
             case .LOCAL_AUTH_ERROR:
                 return "Any other Local Auth Error Occurred"
             }
