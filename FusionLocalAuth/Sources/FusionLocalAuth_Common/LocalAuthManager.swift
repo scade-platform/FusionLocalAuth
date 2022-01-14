@@ -71,8 +71,14 @@ public enum AuthError: Error{
      * @discussion A passcode isn’t set on the device.
      */
     case PASSCODE_NOT_SET
+    /*
+     * @property LOCAL_AUTH_ERROR
+     *
+     * @discussion Any other error except the above defined.
+     */
+    case LOCAL_AUTH_ERROR
     
-    public func description() -> String {
+    public var description:String {
             switch self {
             
             case .BIOMETRY_NOT_AVAILABLE:
@@ -101,6 +107,8 @@ public enum AuthError: Error{
                 
             case .PASSCODE_NOT_SET:
                 return "A passcode isn’t set on the device."
+            case .LOCAL_AUTH_ERROR:
+                return "Any other Local Auth Error Occurred"
             }
         }
     
@@ -131,7 +139,7 @@ public protocol LocalAuthManagerProtocol {
      *
      */
     
-    func requestBiometricAuthentication(authTitle:String, reasonTitle:String, cancelTitle:String, status: @escaping (Bool, AuthError?) -> Void )
+    func requestBiometricAuthentication(authTitle:String, reasonTitle:String, cancelTitle:String, completionStatus: @escaping (Bool, AuthError?) -> Void )
     
     /*
      * @property requestDeviceAuthentication
@@ -143,6 +151,6 @@ public protocol LocalAuthManagerProtocol {
      *        cancelText: String
      *
      */
-    func requestDeviceAuthentication(authTitle:String, reasonTitle:String, cancelTitle:String, status: @escaping (Bool, AuthError?) -> Void)
+    func requestDeviceAuthentication(authTitle:String, reasonTitle:String, cancelTitle:String, completionStatus: @escaping (Bool, AuthError?) -> Void)
     
 }
