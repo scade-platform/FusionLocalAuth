@@ -130,7 +130,7 @@ public protocol LocalAuthManagerProtocol {
      *        cancelText: String
      *
      */
-    @available(OSX 10.12.2, *)
+    
     func requestBiometricAuthentication(authTitle:String, reasonTitle:String, cancelTitle:String, status: @escaping (Bool, AuthError?) -> Void )
     
     /*
