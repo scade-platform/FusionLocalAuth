@@ -28,7 +28,7 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
             if let error = evaluateError {
                 completionStatus(false, self.getAuthError(errorCode: error._code))
             }
-            completionStatus(true, nil)
+            completionStatus(success, nil)
             
         }
     }
@@ -53,7 +53,7 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
             if let error = evaluateError {
                 completionStatus(false, self.getAuthError(errorCode: error._code))
             }
-            completionStatus(true, nil)
+            completionStatus(success, nil)
         }
     }
     
