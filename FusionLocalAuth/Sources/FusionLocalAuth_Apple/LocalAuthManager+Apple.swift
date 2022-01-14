@@ -63,28 +63,28 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
         case LAError.userCancel.rawValue:
             return .AUTH_CANCELLED_USER
             
-        case LAError.authenticationFailed.rawValue:
+        case LAError.systemCancel.rawValue:
             return .AUTH_CANCELLED_SYSTEM
             
-        case LAError.userCancel.rawValue:
+        case LAError.authenticationFailed.rawValue:
             return .AUTH_FAILED
             
-        case LAError.userCancel.rawValue:
+        case LAError.notInteractive.rawValue:
             return  .AUTH_NOT_INTERACTIVE
             
-        case LAError.userCancel.rawValue:
+        case LAError.userFallback.rawValue:
             return .BIOMETRY_DISCONNECTED
             
-        case LAError.userCancel.rawValue:
+        case LAError.biometryLockout.rawValue:
             return .BIOMETRY_LOCKOUT
             
-        case LAError.userCancel.rawValue:
+        case LAError.biometryNotAvailable.rawValue:
             return .BIOMETRY_NOT_AVAILABLE
             
-        case LAError.userCancel.rawValue:
+        case LAError.biometryNotEnrolled.rawValue:
             return .BIOMETRY_NOT_ENROLLED
             
-        case LAError.userCancel.rawValue:
+        case LAError.passcodeNotSet.rawValue:
             return .PASSCODE_NOT_SET
             
         default:
