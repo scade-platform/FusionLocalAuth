@@ -28,10 +28,8 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
             if let error = evaluateError {
                 completionStatus(false, self.getAuthError(errorCode: error._code))
             }
+            completionStatus(true, nil)
             
-            if success {
-                completionStatus(true, nil)
-            }
         }
     }
     
@@ -51,13 +49,11 @@ public class  LocalAuthManager: LocalAuthManagerProtocol {
         localAuthenticationContext.localizedCancelTitle = cancelTitle
         
         localAuthenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reasonTitle) { success, evaluateError in
+            
             if let error = evaluateError {
                 completionStatus(false, self.getAuthError(errorCode: error._code))
             }
-            
-            if success {
-                completionStatus(true, nil)
-            }
+            completionStatus(true, nil)
         }
     }
     
