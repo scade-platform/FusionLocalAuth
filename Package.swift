@@ -15,6 +15,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
+         .package(name: "Android", url: "https://github.com/scade-platform/swift-android.git", .branch("android/24"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -24,6 +25,7 @@ let package = Package(
             dependencies: [
                 .target(name: "FusionLocalAuth_Common"),
                 .target(name: "FusionLocalAuth_Apple", condition: .when(platforms: [.iOS, .macOS])),
+                 .target(name: "FusionLocalAuth_Android", condition: .when(platforms: [.android])),
             ]),
         .target(
             name: "FusionLocalAuth_Common"
@@ -34,8 +36,15 @@ let package = Package(
                 .target(name: "FusionLocalAuth_Common"),
             ]
         ),
-        .testTarget(
-            name: "FusionLocalAuthTests",
-            dependencies: ["FusionLocalAuth"]),
+        .target(
+            name: "FusionLocalAuth_Android",
+            dependencies: [
+              .target(name: "FusionLocalAuth_Common"),
+              .product(name: "Android", package: "Android", condition: .when(platforms: [.android])),
+              .product(name: "AndroidOS", package: "Android", condition: .when(platforms: [.android])),
+              .product(name: "AndroidApp", package: "Android", condition: .when(platforms: [.android]))              
+            ],
+            resources: [.copy("Generated/FusionLocalAuth_Android.java")]         
+        )            
     ]
 )
