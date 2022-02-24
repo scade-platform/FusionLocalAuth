@@ -36,28 +36,30 @@ public class LocalAuthManager: LocalAuthManagerProtocol {
     }
 
     if androidKeyguardManager!.isKeyguardSecure() {
-      print("keyguard is secure.")
       let authIntent = androidKeyguardManager!.createConfirmDeviceCredentialIntent(
-        title: "title", description: "desc")
+        title: authTitle, description: reasonTitle)
+        
       currentActivity!.startActivityForResult(intent: authIntent, requestCode: 333)
+      
+      
+      
+      
     }
 
   }
 
   public func canAuthenticateWithBiometrics() -> Bool {
     if androidKeyguardManager != nil {
-      print("android keyguardmanager")
       return androidKeyguardManager!.isDeviceSecure()
     }
-    print("android keyguard manager is null")
-    return false
+       return false
   }
 
   public func requestBiometricAuthentication(
     authTitle: String, reasonTitle: String, cancelTitle: String,
     completionStatus: @escaping (Bool, AuthError?) -> Void
   ) {
-    print("Biometric authentication now available in SCADE platform as of now!")
+    // now availablle yet, will be present with API 28+ in Swift-Android
   }
 
 }
