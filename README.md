@@ -30,7 +30,7 @@ Features:
 
 ## Integration
 
-### Add to `Package.swift`
+### 1. Add to `Package.swift`
 
 ```swift
 // swift-tools-version:5.3
@@ -75,13 +75,13 @@ let package = Package(
 )
 ```
 
-### Import `FusionLocalAuth`
+### 2. Import `FusionLocalAuth`
 ```swift
 import FusionLocalAuth
 ```
 
 
-### Check if the device support biometric authentication
+### 3. Check if the device support biometric authentication
  
 ```swift
   let localAuth: LocalAuthManager = LocalAuthManager()
@@ -93,7 +93,7 @@ import FusionLocalAuth
     }
    ```
 
-### Request biometric authentication and handle the response
+### 4. Request biometric authentication and handle the response
 
 ```swift
 localAuth.requestBiometricAuthentication(
