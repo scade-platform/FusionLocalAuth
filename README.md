@@ -92,3 +92,21 @@ import FusionLocalAuth
       self.label.text = "The device can authenticate with biometrics"
     }
    ```
+
+### Request biometric authentication and handle the response
+
+```swift
+localAuth.requestBiometricAuthentication(
+        authTitle: "Biometric Authentication", reasonTitle: "This feature requires the biometrics for security purposes.", cancelTitle: "Cancel Biometric Authentication",
+        completionStatus: { [weak self] (success, error) in
+
+          guard success else {
+            print(error?.description)
+            S.label2.text = "Auth Failed"
+            return
+          }
+
+          S.label2.text = "Auth Successful"
+
+        })
+```
