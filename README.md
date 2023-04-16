@@ -75,3 +75,20 @@ let package = Package(
 )
 ```
 
+### Import `FusionLocalAuth`
+```swift
+import FusionLocalAuth
+```
+
+
+### Check if the device support biometric authentication
+ 
+```swift
+  let localAuth: LocalAuthManager = LocalAuthManager()
+  let bool = localAuth.canAuthenticateWithBiometrics()
+    if !bool {
+      self.label.text = "The device can't authenticate using Biometrics!"
+    } else {
+      self.label.text = "The device can authenticate with biometrics"
+    }
+   ```
